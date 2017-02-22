@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:text="Settings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/settings"
+        android:textAppearance="@android:style/TextAppearance.Material.Display2" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="25dp" />
+
+    <TextView
+        android:text="Animal Preference"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/animalpref"
+        android:textAppearance="@android:style/TextAppearance.Material.Display1" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="25dp" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="162dp">
+
+        <Switch
+            android:text="All"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/all"
+            android:textAppearance="@android:style/TextAppearance.Material.Large" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+        <Switch
+            android:text="Dog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/dog"
+            android:textAppearance="@android:style/TextAppearance.Material.Large" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+
+        <Switch
+            android:text="Cat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/cat"
+            android:textAppearance="@android:style/TextAppearance.Material.Large" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
+
+        <Switch
+            android:text="Other"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/other"
+            android:textAppearance="@android:style/TextAppearance.Material.Large" />
+
+
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="100dp" />
+
+    <Button
+        android:text="Advance Search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/advancesearch" />
+</LinearLayout>
