@@ -29,13 +29,17 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".ShelterLocator"
-            android:label="@string/title_activity_shelter_locator">
+            android:name=".Login"
+            android:label="@string/title_activity_shelter_login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".Register">
+        </activity>
+        <activity android:name=".MainActivity">
         </activity>
     </application>
 
