@@ -55,7 +55,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
 //                    userLocalStore.storeUserData(user);
 //                    userLocalStore.setUserLoggedIn(true);
 
-                    startActivity(new Intent(this, MainActivity.class));
+                    startActivity(new Intent(this, mainScreenActivity.class));
                 } else {
                     tvFailure.setVisibility(View.VISIBLE);
                 }
