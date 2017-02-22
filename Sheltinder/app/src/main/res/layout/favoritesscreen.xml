@@ -6,27 +6,10 @@
     android:orientation="vertical">
 
     <TextView
-        android:text="Favorites"
+        android:text="@string/favorites"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/favtext"
         android:textAppearance="@android:style/TextAppearance.Material.Display3" />
-
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <ImageButton
-            app:srcCompat="@android:drawable/sym_def_app_icon"
-            android:id="@+id/examplefav"
-            android:layout_width="115dp"
-            android:layout_height="130dp" />
-
-        <ImageButton
-            app:srcCompat="?android:attr/accessibilityFocusedDrawable"
-            android:id="@+id/exfav2"
-            android:layout_width="115dp"
-            android:layout_height="130dp" />
-    </GridLayout>
 
 </LinearLayout>
