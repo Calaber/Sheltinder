@@ -6,7 +6,7 @@
     android:weightSum="1">
 
     <TextView
-        android:text="Animal Info"
+        android:text="@string/animal_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/animalinfo"
@@ -16,7 +16,7 @@
         android:layout_height="25dp" />
 
     <TextView
-        android:text="Info"
+        android:text="@string/info"
         android:layout_width="match_parent"
         android:id="@+id/ainfo"
         android:textAppearance="@android:style/TextAppearance.Material.Large"
@@ -28,7 +28,7 @@
         android:layout_height="25dp" />
 
     <TextView
-        android:text="Shelter Info"
+        android:text="@string/shelter_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/shelterinfo"
@@ -39,7 +39,7 @@
         android:layout_height="25dp" />
 
     <TextView
-        android:text="Info"
+        android:text="@string/info"
         android:layout_width="match_parent"
         android:id="@+id/sinfo"
         android:textAppearance="@android:style/TextAppearance.Material.Large"
