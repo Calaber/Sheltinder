@@ -3,6 +3,7 @@ package pets.sheltinder;
         import android.content.Intent;
         import android.support.v7.app.AppCompatActivity;
         import android.os.Bundle;
+        import android.util.Log;
         import android.view.View;
         import android.widget.Button;
         import android.widget.CheckBox;
@@ -10,6 +11,7 @@ package pets.sheltinder;
         import android.widget.TextView;
 
 public class Register extends AppCompatActivity implements View.OnClickListener{
+    private final String TAG = getClass().getSimpleName();
 
     EditText etUsername, etPassword, etConfirm;
     TextView tvFailure;
@@ -34,6 +36,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
         cbShelter = (CheckBox) findViewById(R.id.cbShelter);
 
         bRegister.setOnClickListener(this);
+        Log.d(TAG, "Loaded Class");
     }
 
     @Override
