@@ -36,11 +36,12 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
         cbShelter = (CheckBox) findViewById(R.id.cbShelter);
 
         bRegister.setOnClickListener(this);
-        Log.d(TAG, "Loaded Class");
+        Log.v(TAG, "onCreate");
     }
 
     @Override
     public void onClick(View v) {
+        Log.v(TAG, "onClick");
         switch (v.getId()) {
             case R.id.bRegister:
 

@@ -16,7 +16,7 @@ public class settingScreenActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settingscreenlayout);
         addListenersOnButtons();
-        Log.d(TAG, "Loaded Class");
+        Log.d(TAG, "onCreate");
     }
 
     public void addListenersOnButtons(){

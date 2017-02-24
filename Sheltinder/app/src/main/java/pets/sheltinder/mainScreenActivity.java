@@ -21,7 +21,7 @@ public class mainScreenActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mainscreenlayout);
         addListenersOnButtons();
-        Log.d(TAG, "Loaded Class");
+        Log.d(TAG, "onCreate");
     }
 
     public void addListenersOnButtons(){

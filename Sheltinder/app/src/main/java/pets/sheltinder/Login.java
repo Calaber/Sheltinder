@@ -40,11 +40,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
 //        userLocalStore = new UserLocalStore(this);
 
         helper = new DataBaseHelper(this);
-        Log.d(TAG, "Loaded Class");
+        Log.d(TAG, "onCreate");
     }
 
     @Override
     public void onClick(View v) {
+        Log.d(TAG, "onClick");
         switch (v.getId()) {
             case R.id.bLogin:
 
