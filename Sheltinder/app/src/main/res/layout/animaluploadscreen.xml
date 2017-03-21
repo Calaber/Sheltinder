@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:text="@string/animal_name"
+                android:ems="10"
+                android:id="@+id/animalInfoName" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:inputType="textMultiLine"
+                android:ems="10"
+                android:id="@+id/animalDescription"
+                android:text="@string/animal_description"
+                android:layout_height="200dp" />
+
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                app:srcCompat="@android:drawable/ic_menu_upload"
+                android:id="@+id/animalImageButton" />
+
+            <Button
+                android:text="@string/accept"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/accept" />
+        </LinearLayout>
+</ScrollView>
