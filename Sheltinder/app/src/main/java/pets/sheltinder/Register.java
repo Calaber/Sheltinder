@@ -69,8 +69,11 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
                         c.setAccessType(isShelter);
 
                         helper.insertContact(c);
+                        if(isShelter){
 
-                        startActivity(new Intent(this, Login.class));
+                        }else {
+                            startActivity(new Intent(this, Login.class));
+                        }
                     } else {
                         tvFailure.setText(R.string.diff_passwords);
                         tvFailure.setVisibility(View.VISIBLE);
