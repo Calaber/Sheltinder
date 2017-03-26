@@ -21,6 +21,7 @@
     <string name="shelter_info">Shelter Info</string>
     <string name="animal_name">Animal Name</string>
     <string name="animal_description">Animal Description</string>
+    <string name="directions">Directions</string>
 
     <!-- Login Screen Strings -->
     <string name="blank_username">Please enter a username</string>
