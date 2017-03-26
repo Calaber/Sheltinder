@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="16dp">
 
     <TextView
         android:text="@string/settings"
@@ -75,13 +76,20 @@
 
     </LinearLayout>
 
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/range"
+        android:spinnerMode="dropdown"
+        android:entries="@array/area_range" />
+
     <Space
         android:layout_width="match_parent"
         android:layout_height="100dp" />
 
     <Button
-        android:text="@string/advance_search"
+        android:text="@string/save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/advancesearch" />
+        android:id="@+id/save" />
 </LinearLayout>
