@@ -31,4 +31,11 @@
     <string name="blank_password">Please enter a password</string>
     <string name="diff_passwords">Passwords do not match</string>
     <string name="title_activity_maps">Map</string>
+
+    <string-array name="area_range">
+        <item>15</item>
+        <item>30</item>
+        <item>45</item>
+        <item>60</item>
+    </string-array>
 </resources>
