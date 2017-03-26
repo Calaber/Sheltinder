@@ -2,23 +2,22 @@ package pets.sheltinder;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.AdapterView;
-import android.widget.Button;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Spinner;
 import android.widget.Switch;
 
 public class settingScreenActivity extends Activity {
     private final String TAG = getClass().getSimpleName();
-    SharedPreferences sharedPref = settingScreenActivity.this.getPreferences(Context.MODE_PRIVATE);
-    boolean dog, cat, other =false;
-    boolean all=true;
+    SharedPreferences sharedPref;
+    boolean dog, cat, other;
+    boolean all;
     int radius=15;
     Switch dogSwi, catSwi, otherSwi,allSwi;
     Button save;
@@ -29,14 +28,19 @@ public class settingScreenActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settingscreenlayout);
+        sharedPref= settingScreenActivity.this.getPreferences(Context.MODE_PRIVATE);
+        dog=false;
+        cat=false;
+        other=false;
+        all=true;
         setUpSwitches();
-        addListenersOnSaveButton();
         setUpSettings();
+        addListenersOnSaveButton();
         Log.d(TAG, "onCreate");
     }
 
     public void addListenersOnSaveButton(){
-        save = (Button) findViewById(R.id.browse);
+        save = (Button) findViewById(R.id.save);
         save.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View arg0) {
@@ -92,12 +96,13 @@ public class settingScreenActivity extends Activity {
     }
 
     //Saves all the settings
-    private void saveSettings(){
+    public void saveSettings(){
         SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putBoolean("wantAll", all);
         editor.putBoolean("wantDog", dog);
         editor.putBoolean("wantCat", cat);
         editor.putBoolean("wantOther", other);
-        editor.putBoolean("wantAll", all);
+
         editor.putInt("radius",radius);
         editor.commit();
     }
@@ -108,13 +113,14 @@ public class settingScreenActivity extends Activity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
-                    all=true;
                     dog=false;
                     dogSwi.setChecked(dog);
                     cat=false;
                     catSwi.setChecked(cat);
                     other=false;
                     otherSwi.setChecked(other);
+                    all=true;
+                    allSwi.setChecked(all);
                 }
                 else {
                     all=false;
@@ -161,13 +167,13 @@ public class settingScreenActivity extends Activity {
     }
     private void setupOtherSwi(){
 
-        allSwi.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        otherSwi.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
                     all=false;
                     allSwi.setChecked(all);
-                    other=false;
+                    other=true;
 
                 }
                 else {
