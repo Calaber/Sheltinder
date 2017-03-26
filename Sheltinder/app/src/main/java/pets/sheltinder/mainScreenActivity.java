@@ -26,7 +26,6 @@ public class mainScreenActivity extends Activity {
 
     public void addListenersOnButtons(){
         addListenerOnBrowseButton();
-        addListenerOnFavoritesButton();
         addListenerOnSettingsButton();
         addListenerOnLogOutButton();
     }
@@ -51,19 +50,6 @@ public class mainScreenActivity extends Activity {
             @Override
             public void onClick(View arg0) {
                 Intent intent = new Intent(context, settingScreenActivity.class);
-                startActivity(intent);
-            }
-        });
-
-    }
-
-    public void addListenerOnFavoritesButton(){
-        final Context context = this;
-        fav = (Button) findViewById(R.id.favorites);
-        fav.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View arg0) {
-                Intent intent = new Intent(context, favoritesScreenActivity.class);
                 startActivity(intent);
             }
         });
