@@ -29,4 +29,5 @@
     <string name="blank_username">Please enter a username</string>
     <string name="blank_password">Please enter a password</string>
     <string name="diff_passwords">Passwords do not match</string>
+    <string name="title_activity_maps">Map</string>
 </resources>
