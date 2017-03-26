@@ -55,8 +55,10 @@ public class settingScreenActivity extends Activity {
         setupCatSwi();
         setupDogSwi();
         setupOtherSwi();
+        setupRange();
 
     }
+
     private void setUpSettings() {
 
         dog = sharedPref.getBoolean("wantDog", dog);
@@ -89,12 +91,14 @@ public class settingScreenActivity extends Activity {
         }
     }
 
+    //Saves all the settings
     private void saveSettings(){
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putBoolean("wantDog", dog);
         editor.putBoolean("wantCat", cat);
         editor.putBoolean("wantOther", other);
         editor.putBoolean("wantAll", all);
+        editor.putInt("radius",radius);
         editor.commit();
     }
 
