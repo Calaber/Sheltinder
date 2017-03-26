@@ -4,6 +4,7 @@
 
     <!-- Layout Screen Strings -->
     <string name="all">All</string>
+    <string name="save">Save</string>
     <string name="advance_search">Advance Search</string>
     <string name="animal_preference">Animal Preferences</string>
     <string name="animal_info">Animal Info</string>

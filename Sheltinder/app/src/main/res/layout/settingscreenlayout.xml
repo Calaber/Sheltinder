@@ -75,12 +75,17 @@
 
     </LinearLayout>
 
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/range" />
+
     <Space
         android:layout_width="match_parent"
         android:layout_height="100dp" />
 
     <Button
-        android:text="Save"
+        android:text="@string/save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/save" />
