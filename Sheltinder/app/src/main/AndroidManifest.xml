@@ -41,7 +41,6 @@
         </activity>
         <activity android:name=".Register"></activity>
         <activity android:name=".mainScreenActivity"></activity>
-        <activity android:name=".favoritesScreenActivity"></activity>
         <activity android:name=".animalScreenActivity"></activity>
         <activity android:name=".animalInfoScreenActivity"></activity>
         <activity android:name=".settingScreenActivity"></activity>
