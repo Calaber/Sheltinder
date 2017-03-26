@@ -15,6 +15,7 @@ import android.view.View.OnClickListener;
 public class animalInfoScreenActivity extends Activity{
     private final String TAG = getClass().getSimpleName();
 
+    Button bDirections;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +25,18 @@ public class animalInfoScreenActivity extends Activity{
     }
 
     public void addListenersOnButtons(){
+        addListenerOnDirectionsButton();
+    }
 
+    public void addListenerOnDirectionsButton(){
+        final Context context = this;
+        bDirections = (Button) findViewById(R.id.bMaps);
+        bDirections.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                Intent intent = new Intent(context, MapsActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
