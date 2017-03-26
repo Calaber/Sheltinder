@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:padding="15dp">
 
     <TextView
         android:text="@string/animal_info"
@@ -45,4 +46,11 @@
         android:textAppearance="@android:style/TextAppearance.Material.Large"
         android:layout_weight="0.20"
         android:layout_height="50dp" />
+
+    <Button
+        android:text="@string/directions"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:id="@+id/bMaps"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 </LinearLayout>
