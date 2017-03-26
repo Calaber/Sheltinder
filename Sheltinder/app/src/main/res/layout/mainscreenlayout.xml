@@ -19,6 +19,13 @@
                 android:contentDescription="@string/logo_desc" />
 
             <Button
+                android:text="@string/button_register_pet"
+                android:layout_width="match_parent"
+                android:id="@+id/bPetRegister"
+                android:layout_weight="0.24"
+                android:layout_height="wrap_content" />
+
+            <Button
                 android:text="@string/browse"
                 android:layout_width="match_parent"
                 android:id="@+id/browse"

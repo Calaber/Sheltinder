@@ -1,0 +1,65 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/username"
+        android:textSize="20sp"
+        android:layout_marginBottom="8dp"/>
+
+    <EditText
+        android:id="@+id/etUsername"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_marginBottom="8dp"
+        android:inputType="textVisiblePassword"
+        android:textColor="@android:color/widget_edittext_dark"
+        android:hint="@string/username_example"
+        android:textColorHint="@android:color/secondary_text_dark"
+        android:background="@android:color/transparent"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/password"
+        android:textSize="20sp"
+        android:layout_marginBottom="8dp"/>
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_marginBottom="8dp"
+        android:inputType="textPassword"
+        android:textColor="@android:color/widget_edittext_dark"
+        android:hint="@string/password_example"
+        android:textColorHint="@android:color/secondary_text_dark"
+        android:background="@android:color/transparent"/>
+
+    <Button
+        android:id="@+id/bLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="@string/button_login"
+        android:textSize="20sp"
+        android:background="@android:color/holo_blue_light"/>
+
+    <TextView
+        android:id="@+id/tvRegisterLink"
+        android:layout_width="116dp"
+        android:layout_height="24dp"
+        android:layout_gravity="center_horizontal"
+        android:clickable="true"
+        android:text="@string/button_register"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:gravity="center"/>
+
+</LinearLayout>

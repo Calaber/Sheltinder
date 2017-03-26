@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="8dp"
+            android:text="@string/username"
+            android:textSize="20sp"/>
+
+        <EditText
+            android:id="@+id/etUsername"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:inputType="textVisiblePassword"
+            android:textColor="@android:color/widget_edittext_dark"
+            android:hint="@string/username_example"
+            android:textColorHint="@android:color/secondary_text_dark"
+            android:background="@android:color/transparent"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="8dp"
+            android:text="@string/password"
+            android:textSize="20sp"/>
+
+        <EditText
+            android:id="@+id/etPassword"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:inputType="textPassword"
+            android:textColor="@android:color/widget_edittext_dark"
+            android:hint="@string/password_example"
+            android:textColorHint="@android:color/secondary_text_dark"
+            android:background="@android:color/transparent"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="8dp"
+            android:text="@string/confirmation"
+            android:textSize="20sp"/>
+
+        <EditText
+            android:id="@+id/etConfirm"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:inputType="textPassword"
+            android:textColor="@android:color/widget_edittext_dark"
+            android:hint="@string/password_example"
+            android:textColorHint="@android:color/secondary_text_dark"
+            android:background="@android:color/transparent"/>
+
+        <CheckBox
+            android:id="@+id/cbShelter"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="16dp"
+            android:text="@string/question"/>
+
+        <LinearLayout
+            android:id="@+id/llShelterInfo"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="8dp"
+                android:text="@string/shelter_name"
+                android:textSize="20sp"/>
+
+            <EditText
+                android:id="@+id/etShelterName"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:textColor="@android:color/widget_edittext_dark"
+                android:hint="@string/shelter_name_example"
+                android:textColorHint="@android:color/secondary_text_dark"
+                android:background="@android:color/transparent"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="8dp"
+                android:text="@string/shelter_location"
+                android:textSize="20sp"/>
+
+            <EditText
+                android:id="@+id/etShelterLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:textColor="@android:color/widget_edittext_dark"
+                android:inputType="textPostalAddress"
+                android:hint="@string/shelter_location_example"
+                android:textColorHint="@android:color/secondary_text_dark"
+                android:background="@android:color/transparent"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="8dp"
+                android:text="@string/shelter_description"
+                android:textSize="20sp"/>
+
+            <EditText
+                android:id="@+id/etShelterDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:textColor="@android:color/widget_edittext_dark"
+                android:hint="@string/shelter_description_example"
+                android:textColorHint="@android:color/secondary_text_dark"
+                android:background="@android:color/transparent"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/bUserRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/button_accept"
+            android:textSize="20sp"
+            android:background="@android:color/holo_blue_light"/>
+
+    </LinearLayout>
+
+</ScrollView>

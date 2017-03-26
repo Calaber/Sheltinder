@@ -12,8 +12,8 @@ import android.view.View.OnClickListener;
 public class mainScreenActivity extends Activity {
     private final String TAG = getClass().getSimpleName();
 
+    Button bPetRegister;
     Button browseB;
-    Button fav;
     Button settings;
     Button logOut;
     @Override
@@ -22,12 +22,27 @@ public class mainScreenActivity extends Activity {
         setContentView(R.layout.mainscreenlayout);
         addListenersOnButtons();
         Log.d(TAG, "onCreate");
+
     }
 
     public void addListenersOnButtons(){
+        addListenerOnRegisterButton();
         addListenerOnBrowseButton();
         addListenerOnSettingsButton();
         addListenerOnLogOutButton();
+    }
+
+    public void addListenerOnRegisterButton() {
+        final Context context = this;
+        bPetRegister = (Button) findViewById(R.id.bPetRegister);
+        bPetRegister.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                Intent intent = new Intent(context, PetRegisterScreen.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     public void addListenerOnBrowseButton(){
@@ -62,7 +77,7 @@ public class mainScreenActivity extends Activity {
         logOut.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                Intent intent = new Intent(context, Login.class);
+                Intent intent = new Intent(context, LoginScreen.class);
                 startActivity(intent);
             }
         });

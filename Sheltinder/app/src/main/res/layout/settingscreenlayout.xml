@@ -23,10 +23,6 @@
         android:id="@+id/animalpref"
         android:textAppearance="@android:style/TextAppearance.Material.Display1" />
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="25dp" />
-
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -37,7 +33,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/all"
-            android:textAppearance="@android:style/TextAppearance.Material.Large" />
+            android:textAppearance="@android:style/TextAppearance.Material.Large"
+            android:checked="false"/>
 
         <Space
             android:layout_width="match_parent"
@@ -75,6 +72,10 @@
 
 
     </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="25dp" />
 
     <Spinner
         android:layout_width="match_parent"
