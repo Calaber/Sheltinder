@@ -62,7 +62,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SharedPreferences preferences = getSharedPreferences("CurrentPet",
                 Context.MODE_PRIVATE);
         petLoc= preferences.getString("pet_location","fail");
-        if(petLoc.equals("fail")){
+        if(!petLoc.equals("fail")){
             destinationLocation = getLocationFromAddress(this,petLoc);
         }
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -77,7 +77,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
-        if(petLoc.equals("fail")){
+        if(!petLoc.equals("fail")){
             MarkerOptions markerOptions = new MarkerOptions();
             markerOptions.position(destinationLocation);
             markerOptions.title("Current Position");
