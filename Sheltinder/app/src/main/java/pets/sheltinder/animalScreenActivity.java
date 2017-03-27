@@ -148,7 +148,7 @@ public class animalScreenActivity extends Activity {
                 petType=temp.getString(TAG_TYP);
                 int startingIndex=currentPetIndex;
                 int repeat=0;
-                while(!types.toString().contains(petType)&& repeat==0){
+                while(java.util.Arrays.asList(types).indexOf(petType) < 0 && repeat==0){
                     currentPetIndex++;
                     if(pets==null || currentPetIndex>=pets.length()){
                         currentPetIndex=0;
