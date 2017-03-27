@@ -33,7 +33,7 @@ import java.net.URL;
 
 public class animalScreenActivity extends Activity {
     private final String TAG = getClass().getSimpleName();
-    private static String myJSON;
+    private static String myJSON="";
 
     private static final String PET_DATA_URL = "http://sheltinderdatabase.000webhostapp.com/getPetInfo.php";
 
@@ -136,6 +136,8 @@ public class animalScreenActivity extends Activity {
         editor.putInt("currentPetIndex",currentPetIndex);
         editor.commit();
     }
+
+    //Not currently using. Deferring to getJSON Method
     public void getData(){
         Response.Listener<String> responseListener = new Response.Listener<String>() {
             @Override
@@ -176,7 +178,7 @@ public class animalScreenActivity extends Activity {
                     while((json = bufferedReader.readLine())!= null){
                         sb.append(json+"\n");
                     }
-                    myJSON=sb.toString().trim();
+                    myJSON=sb.toString();
                     return myJSON;
 
                 }catch(Exception e){
