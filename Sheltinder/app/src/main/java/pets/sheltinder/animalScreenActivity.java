@@ -24,6 +24,7 @@ import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -113,11 +114,30 @@ public class animalScreenActivity extends Activity {
                 Context.MODE_PRIVATE);
         //currentPetIndex=settings.getInt("currentPetIndex",currentPetIndex);
         //getData();
+        SharedPreferences searchSettings=getSharedPreferences("settings",Context.MODE_PRIVATE);
+        String [] types=new String [3];
+        if(!searchSettings.getBoolean("wantAll",true)) {
+
+            if (searchSettings.getBoolean("wantDog", true)) {
+                types[0] = "0";
+            }
+            if (searchSettings.getBoolean("wantCat", true)) {
+                types[1]= "1";
+            }
+            if (searchSettings.getBoolean("wantOther", true)) {
+                types[2]="2";
+            }
+        }else{
+            types[0] = "0";
+            types[1] = "1";
+            types[2] = "2";
+        }
 
         if(pets==null || currentPetIndex>=pets.length()){
             currentPetIndex=0;
 
         }
+
         if(pets!=null&& currentPetIndex<pets.length()){
             try {
                 JSONObject temp = pets.getJSONObject(currentPetIndex);
@@ -126,6 +146,26 @@ public class animalScreenActivity extends Activity {
                 petLoc=temp.getString(TAG_LOC);
                 petDesc=temp.getString(TAG_DESC);
                 petType=temp.getString(TAG_TYP);
+                int startingIndex=currentPetIndex;
+                int repeat=0;
+                while(!types.toString().contains(petType)&& repeat==1){
+                    currentPetIndex++;
+                    if(pets==null || currentPetIndex>=pets.length()){
+                        currentPetIndex=0;
+
+                    }
+                    temp = pets.getJSONObject(currentPetIndex);
+                    petID = temp.getString(TAG_ID);
+                    petName= temp.getString(TAG_NAME);
+                    petLoc=temp.getString(TAG_LOC);
+                    petDesc=temp.getString(TAG_DESC);
+                    petType=temp.getString(TAG_TYP);
+                    if(startingIndex==currentPetIndex){
+                        repeat++;
+                    }
+                }
+
+                
             } catch (JSONException e){
                 Log.e("Sheltinder", "unexpected JSON exception", e);
             }
