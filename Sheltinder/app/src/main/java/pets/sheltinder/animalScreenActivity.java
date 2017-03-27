@@ -97,7 +97,7 @@ public class animalScreenActivity extends Activity {
                 Context.MODE_PRIVATE);
         currentPetIndex=settings.getInt("currentPetIndex",currentPetIndex);
 
-        if(currentPetIndex>=pets.length()){
+        if(pets==null || currentPetIndex>=pets.length()){
             currentPetIndex=0;
         }
         if(pets!=null&& currentPetIndex<pets.length()){
