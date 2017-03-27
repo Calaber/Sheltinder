@@ -194,6 +194,13 @@ public class animalScreenActivity extends Activity {
                 }
 
             }
+
+            @Override
+            protected void onPostExecute(String s) {
+                super.onPostExecute(s);
+                //extractJSON();
+                setCurrentPet();
+            }
         }
         GetJSON gj = new GetJSON();
         gj.execute(url);
