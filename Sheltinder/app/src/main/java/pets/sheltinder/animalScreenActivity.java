@@ -58,6 +58,10 @@ public class animalScreenActivity extends Activity {
         addListenersOnButtons();
         Log.d(TAG, "onCreate");
         currentPetIndex=0;
+        SharedPreferences settings = getSharedPreferences("CurrentPet",
+                Context.MODE_PRIVATE);
+        currentPetIndex=settings.getInt("currentPetIndex",currentPetIndex);
+
         //getData();
         getJSON(PET_DATA_URL);
         extractJSON();
@@ -104,11 +108,12 @@ public class animalScreenActivity extends Activity {
         String petType="N/A";
         SharedPreferences settings = getSharedPreferences("CurrentPet",
                 Context.MODE_PRIVATE);
-        currentPetIndex=settings.getInt("currentPetIndex",currentPetIndex);
+        //currentPetIndex=settings.getInt("currentPetIndex",currentPetIndex);
         //getData();
 
         if(pets==null || currentPetIndex>=pets.length()){
             currentPetIndex=0;
+
         }
         if(pets!=null&& currentPetIndex<pets.length()){
             try {
