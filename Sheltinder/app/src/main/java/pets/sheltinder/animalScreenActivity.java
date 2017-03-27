@@ -101,11 +101,13 @@ public class animalScreenActivity extends Activity {
         });
     }
     private void setCurrentPet(){
+
         String petID="N/A";
         String petName="Animal Name";
         String petLoc="N/A";
         String petDesc="N/A";
         String petType="N/A";
+        extractJSON();
         SharedPreferences settings = getSharedPreferences("CurrentPet",
                 Context.MODE_PRIVATE);
         //currentPetIndex=settings.getInt("currentPetIndex",currentPetIndex);
