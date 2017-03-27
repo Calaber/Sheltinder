@@ -28,7 +28,7 @@ public class settingScreenActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settingscreenlayout);
-        sharedPref= settingScreenActivity.this.getPreferences(Context.MODE_PRIVATE);
+        sharedPref= getSharedPreferences("settings",Context.MODE_PRIVATE);
         dog=false;
         cat=false;
         other=false;
