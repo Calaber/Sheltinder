@@ -165,7 +165,7 @@ public class animalScreenActivity extends Activity {
                     }
                 }
 
-                
+
             } catch (JSONException e){
                 Log.e("Sheltinder", "unexpected JSON exception", e);
             }
