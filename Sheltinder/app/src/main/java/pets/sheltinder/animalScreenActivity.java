@@ -118,13 +118,13 @@ public class animalScreenActivity extends Activity {
         String [] types=new String [3];
         if(!searchSettings.getBoolean("wantAll",true)) {
 
-            if (searchSettings.getBoolean("wantDog", true)) {
+            if (searchSettings.getBoolean("wantDog", false)) {
                 types[0] = "0";
             }
-            if (searchSettings.getBoolean("wantCat", true)) {
+            if (searchSettings.getBoolean("wantCat", false)) {
                 types[1]= "1";
             }
-            if (searchSettings.getBoolean("wantOther", true)) {
+            if (searchSettings.getBoolean("wantOther", false)) {
                 types[2]="2";
             }
         }else{
@@ -148,7 +148,7 @@ public class animalScreenActivity extends Activity {
                 petType=temp.getString(TAG_TYP);
                 int startingIndex=currentPetIndex;
                 int repeat=0;
-                while(!types.toString().contains(petType)&& repeat==1){
+                while(!types.toString().contains(petType)&& repeat==0){
                     currentPetIndex++;
                     if(pets==null || currentPetIndex>=pets.length()){
                         currentPetIndex=0;
