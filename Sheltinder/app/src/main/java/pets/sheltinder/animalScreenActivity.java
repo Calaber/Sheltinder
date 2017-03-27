@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -20,6 +21,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 
 /**
@@ -28,7 +33,9 @@ import org.json.JSONObject;
 
 public class animalScreenActivity extends Activity {
     private final String TAG = getClass().getSimpleName();
-    String myJSON;
+    private static String myJSON;
+
+    private static final String PET_DATA_URL = "http://sheltinderdatabase.000webhostapp.com/getPetInfo.php";
 
     private static final String TAG_RESULTS="result";
     private static final String TAG_ID = "pet_id";
@@ -51,7 +58,9 @@ public class animalScreenActivity extends Activity {
         addListenersOnButtons();
         Log.d(TAG, "onCreate");
         currentPetIndex=0;
-        getData();
+        //getData();
+        getJSON(PET_DATA_URL);
+        extractJSON();
         setCurrentPet();
 
     }
@@ -96,6 +105,7 @@ public class animalScreenActivity extends Activity {
         SharedPreferences settings = getSharedPreferences("CurrentPet",
                 Context.MODE_PRIVATE);
         currentPetIndex=settings.getInt("currentPetIndex",currentPetIndex);
+        //getData();
 
         if(pets==null || currentPetIndex>=pets.length()){
             currentPetIndex=0;
@@ -145,6 +155,47 @@ public class animalScreenActivity extends Activity {
         RequestQueue queue = Volley.newRequestQueue(animalScreenActivity.this);
         queue.add(petInfo);
 
+    }
+    private void getJSON(String url) {
+        class GetJSON extends AsyncTask<String, Void, String> {
+
+            @Override
+            protected String doInBackground(String... params) {
+
+                String uri = params[0];
+
+                BufferedReader bufferedReader = null;
+                try {
+                    URL url = new URL(uri);
+                    HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                    StringBuilder sb = new StringBuilder();
+
+                    bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+
+                    String json;
+                    while((json = bufferedReader.readLine())!= null){
+                        sb.append(json+"\n");
+                    }
+                    myJSON=sb.toString().trim();
+                    return myJSON;
+
+                }catch(Exception e){
+                    return null;
+                }
+
+            }
+        }
+        GetJSON gj = new GetJSON();
+        gj.execute(url);
+    }
+
+    private void extractJSON(){
+        try {
+            JSONObject jsonObject = new JSONObject(myJSON);
+            pets = jsonObject.getJSONArray(TAG_RESULTS);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
 }
