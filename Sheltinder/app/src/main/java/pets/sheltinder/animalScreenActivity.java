@@ -33,7 +33,7 @@ import java.net.URL;
 
 public class animalScreenActivity extends Activity {
     private final String TAG = getClass().getSimpleName();
-    private static String myJSON="";
+    private static String myJSON="MY_JSON";
 
     private static final String PET_DATA_URL = "http://sheltinderdatabase.000webhostapp.com/getPetInfo.php";
 
@@ -178,7 +178,7 @@ public class animalScreenActivity extends Activity {
                     while((json = bufferedReader.readLine())!= null){
                         sb.append(json+"\n");
                     }
-                    myJSON=sb.toString();
+                    myJSON=sb.toString().trim();
                     return myJSON;
 
                 }catch(Exception e){
@@ -193,8 +193,10 @@ public class animalScreenActivity extends Activity {
 
     private void extractJSON(){
         try {
-            JSONObject jsonObject = new JSONObject(myJSON);
-            pets = jsonObject.getJSONArray(TAG_RESULTS);
+            if(myJSON!=null) {
+                JSONObject jsonObject = new JSONObject(myJSON);
+                pets = jsonObject.getJSONArray(TAG_RESULTS);
+            }
         } catch (JSONException e) {
             e.printStackTrace();
         }
