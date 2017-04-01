@@ -21,7 +21,6 @@ public class settingScreenActivity extends Activity {
     int radius=15;
     Switch dogSwi, catSwi, otherSwi,allSwi;
     Button save;
-    Spinner range;
 
 
     @Override
@@ -53,13 +52,11 @@ public class settingScreenActivity extends Activity {
         dogSwi = (Switch) findViewById(R.id.dog);
         catSwi = (Switch) findViewById(R.id.cat);
         otherSwi = (Switch) findViewById(R.id.other);
-        range = (Spinner) findViewById(R.id.range);
 
         setupAllSwi();
         setupCatSwi();
         setupDogSwi();
         setupOtherSwi();
-        setupRange();
 
     }
 
@@ -77,22 +74,6 @@ public class settingScreenActivity extends Activity {
         otherSwi.setChecked(other);
         catSwi.setChecked(cat);
         dogSwi.setChecked(dog);
-
-        switch (radius){
-            case 15:
-                range.setSelection(0);
-                break;
-            case 30:
-                range.setSelection(1);
-                break;
-            case 45:
-                range.setSelection(2);
-                break;
-            case 60:
-                range.setSelection(3);
-                break;
-
-        }
     }
 
     //Saves all the settings
@@ -182,34 +163,5 @@ public class settingScreenActivity extends Activity {
             }
         });
 
-    }
-
-    private  void setupRange(){
-        range.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                switch (position){
-                    case 0:
-                        radius=15;
-                        break;
-                    case 1:
-                        radius=30;
-                        break;
-                    case 2:
-                        radius=45;
-                        break;
-                    case 3:
-                        radius=60;
-                        break;
-
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parentView) {
-                range.setSelection(0);
-            }
-
-        });
     }
 }
