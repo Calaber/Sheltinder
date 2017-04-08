@@ -9,13 +9,14 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.widget.Button;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageButton;
+import android.widget.Button;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.NetworkImageView;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
@@ -40,6 +41,8 @@ public class animalScreenActivity extends Activity {
     private static final String TAG_DESC ="pet_description";
     private static final String TAG_TYP ="pet_type";
 
+    NetworkImageView nImageView; ImageLoader imageLoader;
+
     int currentPetIndex;
 
     JSONArray pets = null;
@@ -57,6 +60,8 @@ public class animalScreenActivity extends Activity {
         SharedPreferences settings = getSharedPreferences("CurrentPet",
                 Context.MODE_PRIVATE);
         currentPetIndex=settings.getInt("currentPetIndex",currentPetIndex);
+
+        nImageView = (NetworkImageView) findViewById(R.id.nImageView);
 
         //getData();
         getJSON(PET_DATA_URL);
@@ -159,6 +164,7 @@ public class animalScreenActivity extends Activity {
                     }
                 }
 
+                loadImage("http://sheltinderdatabase.000webhostapp.com/pictures/" + petID + ".JPG");
 
             } catch (JSONException e){
                 Log.e("Sheltinder", "unexpected JSON exception", e);
@@ -270,5 +276,11 @@ public class animalScreenActivity extends Activity {
         intent.addCategory(Intent.CATEGORY_HOME);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
+    }
+
+    private void loadImage(String url){
+        imageLoader = CustomVolleyRequest.getInstance(this.getApplicationContext()).getImageLoader();
+        imageLoader.get(url, ImageLoader.getImageListener(nImageView, 0, android.R.drawable.ic_dialog_alert));
+        nImageView.setImageUrl(url, imageLoader);
     }
 }
