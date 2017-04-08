@@ -30,9 +30,7 @@ import java.net.URL;
 public class animalScreenActivity extends Activity {
     private final String TAG = getClass().getSimpleName();
     private static String myJSON="MY_JSON";
-
     private static final String PET_DATA_URL = "http://sheltinderdatabase.000webhostapp.com/getPetInfo.php";
-
     private static final String TAG_RESULTS="result";
     private static final String TAG_ID = "pet_id";
     private static final String TAG_NAME = "pet_name";
@@ -41,12 +39,10 @@ public class animalScreenActivity extends Activity {
     private static final String TAG_TYP ="pet_type";
 
     int currentPetIndex;
-
     JSONArray pets = null;
-
-
     Button infoB;
     Button nextAnimB;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,8 +53,6 @@ public class animalScreenActivity extends Activity {
         SharedPreferences settings = getSharedPreferences("CurrentPet",
                 Context.MODE_PRIVATE);
         currentPetIndex=settings.getInt("currentPetIndex",currentPetIndex);
-
-        //getData();
         getJSON(PET_DATA_URL);
         extractJSON();
         setCurrentPet();
@@ -129,7 +123,6 @@ public class animalScreenActivity extends Activity {
 
         if(pets==null || currentPetIndex>=pets.length()){
             currentPetIndex=0;
-
         }
 
         if(pets!=null&& currentPetIndex<pets.length()){
@@ -146,7 +139,6 @@ public class animalScreenActivity extends Activity {
                     currentPetIndex++;
                     if(pets==null || currentPetIndex>=pets.length()){
                         currentPetIndex=0;
-
                     }
                     temp = pets.getJSONObject(currentPetIndex);
                     petID = temp.getString(TAG_ID);
@@ -158,18 +150,11 @@ public class animalScreenActivity extends Activity {
                         repeat++;
                     }
                 }
-
-
             } catch (JSONException e){
                 Log.e("Sheltinder", "unexpected JSON exception", e);
             }
         }
-
-
-
-
         SharedPreferences.Editor editor = settings.edit();
-
         editor.putString("pet_id",petID);
         editor.putString("pet_name",petName);
         editor.putString("pet_location",petLoc);
@@ -179,27 +164,6 @@ public class animalScreenActivity extends Activity {
         editor.commit();
     }
 
-    //Not currently using. Deferring to getJSON Method
-    public void getData(){
-        Response.Listener<String> responseListener = new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    JSONObject jsonResponse = new JSONObject(response);
-
-                    pets=jsonResponse.getJSONArray(TAG_RESULTS);
-
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        };
-        PetData petInfo = new PetData(responseListener);
-        RequestQueue queue = Volley.newRequestQueue(animalScreenActivity.this);
-        queue.add(petInfo);
-
-    }
     private void getJSON(String url) {
         class GetJSON extends AsyncTask<String, Void, String> {
 

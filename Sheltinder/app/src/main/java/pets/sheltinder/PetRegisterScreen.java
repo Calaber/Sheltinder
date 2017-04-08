@@ -25,17 +25,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class PetRegisterScreen extends AppCompatActivity implements View.OnClickListener{
-
     private static final int RESULT_LOAD_IMAGE = 1;
-
     private static int getPetTypeMethodInt = 0;
 
     EditText etPetName, etPetLocation, etPetDescription;
-
     Spinner sPetType;
-
     ImageView ivPetImage;
-
     Button bSelectImage, bUploadImage, bPetRegister;
 
     @Override

@@ -11,10 +11,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 
-/**
- * Created by alber_000 on 2/22/2017.
- */
-
 public class animalInfoScreenActivity extends Activity{
     private final String TAG = getClass().getSimpleName();
 
@@ -22,6 +18,8 @@ public class animalInfoScreenActivity extends Activity{
     TextView animalName;
     TextView animalInfo;
     TextView animalLoc;
+    AnimalInfo animInfo;
+    ShelterInfo shelInfo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,13 +32,12 @@ public class animalInfoScreenActivity extends Activity{
         SharedPreferences settings = getSharedPreferences("CurrentPet",
                 Context.MODE_PRIVATE);
         String petName = settings.getString("pet_name", "Animal Name");
-        String petDescription= settings.getString("pet_description","N/A");
-        String petLoc= settings.getString("pet_location","N/A");
-        String petType= settings.getString("pet_Type","N/A");
-
+        String petDescription = settings.getString("pet_description","N/A");
+        String petType = Converter.retPetTypeString(settings.getString("pet_Type","N/A"));
+        shelInfo = new ShelterInfo(settings.getString("pet_location","N/A"));
         animalName.setText(petName);
         animalInfo.setText("Pet Type: "+petType+"\n" +petDescription);
-        animalLoc.setText("Shelter Location: "+ petLoc);
+        animalLoc.setText(shelInfo.getLocation());
     }
 
     public void addListenersOnButtons(){
