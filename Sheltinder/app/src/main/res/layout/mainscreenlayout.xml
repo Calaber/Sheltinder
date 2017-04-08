@@ -10,14 +10,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:padding="15dp">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="155dp"
                 app:srcCompat="@drawable/sheltinder_logo"
                 android:id="@+id/imageView"
-                android:contentDescription="@string/logo_desc" />
+                android:contentDescription="@string/logo_desc"/>
 
             <Button
                 android:text="@string/button_register_pet"
