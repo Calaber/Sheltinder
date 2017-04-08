@@ -46,7 +46,7 @@ public class animalScreenActivity extends Activity {
 
 
     Button infoB;
-    ImageButton nextAnimB;
+    Button nextAnimB;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,7 +84,7 @@ public class animalScreenActivity extends Activity {
 
     public void addListenerOnNextAnimalButton(){
         final Context context =this;
-        nextAnimB = (ImageButton) findViewById(R.id.nextAnimalButton);
+        nextAnimB = (Button) findViewById(R.id.nextAnimalButton);
         nextAnimB.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
