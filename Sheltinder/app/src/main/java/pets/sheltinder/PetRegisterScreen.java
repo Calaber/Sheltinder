@@ -1,46 +1,42 @@
 package pets.sheltinder;
 
-import android.app.ProgressDialog;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Base64;
+import android.os.Bundle;
+
+import android.app.AlertDialog;
+import android.content.Intent;
+
+import android.net.Uri;
+import android.provider.MediaStore;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Toast;
 import android.widget.Spinner;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
+import android.widget.AdapterView;
+
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.util.Hashtable;
-import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class PetRegisterScreen extends AppCompatActivity implements View.OnClickListener {
+public class PetRegisterScreen extends AppCompatActivity implements View.OnClickListener{
 
-    public static final String UPLOAD_URL = "http://web.cse.ohio-state.edu/~re.9/registerPet.php";
+    private static final int RESULT_LOAD_IMAGE = 1;
 
-    private EditText etPetName, etPetLocation, etPetDescription;
+    private static int getPetTypeMethodInt = 0;
 
-    private ImageView ivPetImage; private Spinner sPetType;
+    EditText etPetName, etPetLocation, etPetDescription;
 
-    private Button bSelectImage, bUploadImage, bPetRegister;
+    Spinner sPetType;
 
-    private static final int PICK_IMAGE_REQUEST = 1;
+    ImageView ivPetImage;
 
-    private Bitmap bitmap;
+    Button bSelectImage, bUploadImage, bPetRegister;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,127 +53,92 @@ public class PetRegisterScreen extends AppCompatActivity implements View.OnClick
 
         bSelectImage = (Button) findViewById(R.id.bSelectImage);
         bUploadImage = (Button) findViewById(R.id.bUploadImage);
+
         bPetRegister = (Button) findViewById(R.id.bPetRegister);
 
         bSelectImage.setOnClickListener(this);
         bUploadImage.setOnClickListener(this);
+
         bPetRegister.setOnClickListener(this);
     }
 
-    private void showFileChooser() {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.bSelectImage:
+                Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(galleryIntent, RESULT_LOAD_IMAGE);
+                break;
+            case R.id.bUploadImage:
+
+                break;
+            case R.id.bPetRegister:
+
+                final String petName = etPetName.getText().toString();
+                final String petLocation = etPetLocation.getText().toString();
+                final String petDescription = etPetDescription.getText().toString();
+
+                final int petType = sPetType.getSelectedItemPosition();
+
+                Response.Listener<String> responseListener = new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonResponse = new JSONObject(response);
+
+                            boolean success = jsonResponse.getBoolean("success");
+
+                            if (success) {
+                                Intent intent = new Intent(PetRegisterScreen.this, mainScreenActivity.class);
+                                PetRegisterScreen.this.startActivity(intent);
+                            } else {
+                                AlertDialog.Builder builder = new AlertDialog.Builder(PetRegisterScreen.this);
+                                builder.setMessage("Shelter Register Failed")
+                                        .setNegativeButton("Retry", null)
+                                        .create()
+                                        .show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                };
+
+                PetRegisterRequest petRegisterRequest = new PetRegisterRequest(petName, petLocation, petDescription, petType, responseListener);
+                RequestQueue queue = Volley.newRequestQueue(PetRegisterScreen.this);
+                queue.add(petRegisterRequest);
+
+                break;
+        }
+
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
-            Uri filePath = data.getData();
-            try {
-                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
-                ivPetImage.setImageBitmap(bitmap);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && data != null) {
+            Uri selectedImage = data.getData();
+
+            ivPetImage.setImageURI(selectedImage);
         }
     }
 
-    public String getStringImage(Bitmap bmp) {
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-        byte[] imageBytes = baos.toByteArray();
-        return Base64.encodeToString(imageBytes, Base64.DEFAULT);
-    }
+    public int getPetType(Spinner sPetType) {
 
-    private void uploadImage(){
-        //Showing the progress dialog
-        final ProgressDialog loading = ProgressDialog.show(this,"Uploading...","Please wait...",false,false);
+        sPetType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, UPLOAD_URL,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String s) {
-                        //Dismissing the progress dialog
-                        loading.dismiss();
-                        //Showing toast message of the response
-                        Toast.makeText(PetRegisterScreen.this, s , Toast.LENGTH_LONG).show();
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError volleyError) {
-                        //Dismissing the progress dialog
-                        loading.dismiss();
-
-                        //Showing toast
-                        Toast.makeText(PetRegisterScreen.this, volleyError.getMessage(), Toast.LENGTH_LONG).show();
-                    }
-                }){
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                //Converting Bitmap to String
-                String pet_image = getStringImage(bitmap);
-
-                String pet_name = etPetName.getText().toString().trim();
-                String pet_location = etPetLocation.getText().toString().trim();
-                String pet_description = etPetDescription.getText().toString().trim();
-
-                int pet_type = sPetType.getSelectedItemPosition();
-
-                //Creating parameters
-                Map<String,String> params = new Hashtable<>();
-
-                //Adding parameters
-                params.put("pet_name", pet_name);
-                params.put("pet_location", pet_location);
-                params.put("pet_description", pet_description);
-
-                params.put("pet_type", pet_type + "");
-
-                params.put("pet_image", pet_image);
-
-                //returning parameters
-                return params;
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                getPetTypeMethodInt = position;
             }
-        };
 
-        //Creating a Request Queue
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                getPetTypeMethodInt = 0;
+            }
+        });
 
-        //Adding request to the queue
-        requestQueue.add(stringRequest);
-    }
-
-    @Override
-    public void onClick(View v) {
-        if (v == bSelectImage) {
-            showFileChooser();
-
-            ivPetImage.setVisibility(View.VISIBLE);
-
-            bSelectImage.setVisibility(View.GONE);
-            bUploadImage.setVisibility(View.VISIBLE);
-        }
-
-        if (v == bUploadImage) {
-            uploadImage();
-
-            bUploadImage.setVisibility(View.GONE);
-            bPetRegister.setVisibility(View.VISIBLE);
-        }
-
-        if (v == bPetRegister) {
-            Intent intent = new Intent(PetRegisterScreen.this, mainScreenActivity.class);
-            PetRegisterScreen.this.startActivity(intent);
-
-            ivPetImage.setVisibility(View.GONE);
-
-            bSelectImage.setVisibility(View.VISIBLE);
-            bPetRegister.setVisibility(View.GONE);
-        }
+        return getPetTypeMethodInt;
     }
 }

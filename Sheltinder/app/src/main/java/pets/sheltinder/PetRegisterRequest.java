@@ -8,8 +8,7 @@ import java.util.Map;
 
 class PetRegisterRequest extends StringRequest {
 
-    private static final String PET_REGISTER_REQUEST_URL =
-            "http://web.cse.ohio-state.edu/~re.9/registerPet.php";
+    private static final String PET_REGISTER_REQUEST_URL = "http://sheltinderdatabase.000webhostapp.com/PetRegistry.php";
 
     private Map<String, String> params;
 
