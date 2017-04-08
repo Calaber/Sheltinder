@@ -4,34 +4,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/sheltinder_background_text_input"
-    android:padding="16dp">
+    android:background="@drawable/sheltinder_background_text_input">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:padding="16dp">
 
-            <ImageButton
-                android:layout_width="match_parent"
-                app:srcCompat="@android:drawable/sym_def_app_icon"
+            <Button
+                android:text="@string/next_animal"
                 android:id="@+id/nextAnimalButton"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="2dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="0dp"
-                android:layout_weight="1"
                 android:adjustViewBounds="true"
-                android:padding="20dp"
                 android:scaleType="fitCenter"
-                android:layout_height="425dp" />
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:padding="10dp"
+                android:layout_marginBottom="8dp"
+                android:textColor="#ffffff"
+                android:background="@drawable/mybutton"
+                android:textSize="75sp" />
 
             <Button
                 android:text="@string/info"
                 android:layout_height="wrap_content"
                 android:id="@+id/info"
                 android:layout_weight="1"
-                android:layout_width="match_parent" />
+                android:layout_width="match_parent"
+                android:padding="10dp"
+                android:layout_marginBottom="8dp"
+                android:textColor="#ffffff"
+                android:background="@drawable/mybutton"
+                android:textSize="20sp"/>
 
         </LinearLayout>
 </ScrollView>
