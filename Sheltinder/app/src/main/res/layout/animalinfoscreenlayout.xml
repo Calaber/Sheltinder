@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/sheltinder_background_text_input"
     android:weightSum="1"
     android:padding="15dp">
 
@@ -22,7 +23,7 @@
         android:id="@+id/ainfo"
         android:textAppearance="@android:style/TextAppearance.Material.Large"
         android:layout_weight="0.20"
-        android:layout_height="50dp" />
+        android:layout_height="wrap_content" />
 
     <Space
         android:layout_width="match_parent"
@@ -45,7 +46,7 @@
         android:id="@+id/sinfo"
         android:textAppearance="@android:style/TextAppearance.Material.Large"
         android:layout_weight="0.20"
-        android:layout_height="50dp" />
+        android:layout_height="wrap_content" />
 
     <Button
         android:text="@string/directions"

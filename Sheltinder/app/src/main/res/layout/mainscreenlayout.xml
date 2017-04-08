@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/sheltinder_background"
     android:orientation="vertical"
     android:weightSum="1">
 
@@ -14,7 +15,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="155dp"
-                app:srcCompat="@android:drawable/sym_def_app_icon"
+                app:srcCompat="@drawable/sheltinder_logo"
                 android:id="@+id/imageView"
                 android:contentDescription="@string/logo_desc" />
 
