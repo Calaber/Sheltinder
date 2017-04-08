@@ -14,6 +14,7 @@
     <string name="favorite">Favorite</string>
     <string name="favorites">Favorites</string>
     <string name="info">Info</string>
+    <string name="next_pet">Next Pet</string>
     <string name="animal_image_desc">Animal Image</string>
     <string name="logo_desc">Logo</string>
     <string name="other">Other</string>
@@ -75,7 +76,7 @@
 
     <string name="pet_name_example">Mr. Pussy</string>
     <string name="pet_location_example">12345 Adoption Lane Columbus, OH 43201</string>
-    <string name="pet_description_example">Female, Spanish-american twin tail, 2 years old. Likes blue yarn and bells.</string>
+    <string name="pet_description_example">Female, Spanish twin tail.</string>
 
     <string name="select_image">Select Image</string>
     <string name="upload_image">Upload Image</string>

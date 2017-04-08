@@ -16,6 +16,8 @@ import android.widget.ImageButton;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.NetworkImageView;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
@@ -31,7 +33,9 @@ public class animalScreenActivity extends Activity {
     private final String TAG = getClass().getSimpleName();
     private static String myJSON="MY_JSON";
 
-    private static final String PET_DATA_URL = "http://sheltinderdatabase.000webhostapp.com/getPetInfo.php";
+    private static final String PET_DATA_URL = "http://web.cse.ohio-state.edu/~re.9/pictures/16.JPG";
+
+    NetworkImageView nImageView; ImageLoader imageLoader;
 
     private static final String TAG_RESULTS="result";
     private static final String TAG_ID = "pet_id";
@@ -270,5 +274,11 @@ public class animalScreenActivity extends Activity {
         intent.addCategory(Intent.CATEGORY_HOME);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
+    }
+
+    private void loadImage(String url){
+        imageLoader = CustomVolleyRequest.getInstance(this.getApplicationContext()).getImageLoader();
+        imageLoader.get(url, ImageLoader.getImageListener(nImageView, 0, android.R.drawable.ic_dialog_alert));
+        nImageView.setImageUrl(url, imageLoader);
     }
 }
