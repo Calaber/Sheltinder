@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -11,6 +10,13 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="16dp">
+
+            <com.android.volley.toolbox.NetworkImageView
+                android:id="@+id/nImageView"
+                android:layout_width="240dp"
+                android:layout_height="240dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp" />
 
             <Button
                 android:text="@string/next_animal"
@@ -24,7 +30,7 @@
                 android:layout_marginBottom="8dp"
                 android:textColor="#ffffff"
                 android:background="@drawable/mybutton"
-                android:textSize="75sp" />
+                android:textSize="20sp" />
 
             <Button
                 android:text="@string/info"
