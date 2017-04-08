@@ -78,13 +78,15 @@
         android:layout_width="match_parent"
         android:layout_height="25dp" />
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="100dp" />
 
     <Button
         android:text="@string/save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/save" />
+        android:id="@+id/save"
+        android:padding="10dp"
+        android:layout_marginBottom="8dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/mybutton"
+        android:textSize="20sp"/>
 </LinearLayout>

@@ -51,7 +51,12 @@
     <Button
         android:text="@string/directions"
         android:layout_width="match_parent"
-        android:layout_height="75dp"
+        android:layout_height="wrap_content"
         android:id="@+id/bMaps"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:padding="10dp"
+        android:layout_marginBottom="8dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/mybutton"
+        android:textSize="30sp"/>
 </LinearLayout>

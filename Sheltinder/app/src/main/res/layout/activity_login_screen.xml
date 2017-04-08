@@ -47,19 +47,21 @@
         android:id="@+id/bLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="10dp"
         android:layout_marginBottom="8dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/mybutton"
         android:text="@string/button_login"
-        android:textSize="20sp"
-        android:background="@android:color/holo_blue_light"/>
+        android:textSize="20sp"/>
 
     <TextView
         android:id="@+id/tvRegisterLink"
-        android:layout_width="116dp"
-        android:layout_height="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:clickable="true"
         android:text="@string/button_register"
-        android:textSize="16sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         android:gravity="center"/>
 
