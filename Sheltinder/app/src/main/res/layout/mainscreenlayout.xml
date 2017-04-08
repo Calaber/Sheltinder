@@ -10,41 +10,62 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:padding="15dp">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="155dp"
                 app:srcCompat="@drawable/sheltinder_logo"
                 android:id="@+id/imageView"
-                android:contentDescription="@string/logo_desc" />
+                android:contentDescription="@string/logo_desc"/>
 
             <Button
                 android:text="@string/button_register_pet"
                 android:layout_width="match_parent"
                 android:id="@+id/bPetRegister"
                 android:layout_weight="0.24"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_marginBottom="8dp"
+                android:textColor="#ffffff"
+                android:background="@drawable/mybutton"
+                android:textSize="20sp"/>
 
             <Button
                 android:text="@string/browse"
                 android:layout_width="match_parent"
                 android:id="@+id/browse"
                 android:layout_weight="0.24"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_marginBottom="8dp"
+                android:textColor="#ffffff"
+                android:background="@drawable/mybutton"
+                android:textSize="20sp"/>
 
             <Button
                 android:text="@string/settings"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/settings"
-                android:layout_weight="0.24" />
+                android:layout_weight="0.24"
+                android:padding="10dp"
+                android:layout_marginBottom="8dp"
+                android:textColor="#ffffff"
+                android:background="@drawable/mybutton"
+                android:textSize="20sp"/>
 
             <Button
                 android:text="@string/logout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/logout"
-                android:layout_weight="0.24" />
+                android:layout_weight="0.24"
+                android:padding="10dp"
+                android:layout_marginBottom="8dp"
+                android:textColor="#ffffff"
+                android:background="@drawable/mybutton"
+                android:textSize="20sp"/>
         </LinearLayout>
     </ScrollView>

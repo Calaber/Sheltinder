@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/sheltinder_background"
     android:padding="16dp">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
     <TextView
         android:text="@string/settings"
         android:layout_width="match_parent"
@@ -78,13 +82,16 @@
         android:layout_width="match_parent"
         android:layout_height="25dp" />
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="100dp" />
 
     <Button
         android:text="@string/save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/save" />
-</LinearLayout>
+        android:id="@+id/save"
+        android:padding="10dp"
+        android:layout_marginBottom="8dp"
+        android:textColor="#ffffff"
+        android:background="@drawable/mybutton"
+        android:textSize="20sp"/>
+    </LinearLayout>
+</ScrollView>
