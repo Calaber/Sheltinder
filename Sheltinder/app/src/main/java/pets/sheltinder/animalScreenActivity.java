@@ -24,14 +24,8 @@ import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
-
-/**
- * Created by alber_000 on 2/22/2017.
- */
 
 public class animalScreenActivity extends Activity {
     private final String TAG = getClass().getSimpleName();
