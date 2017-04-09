@@ -26,7 +26,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Hashtable;
 import java.util.Map;
-
 public class PetRegisterScreen extends AppCompatActivity implements View.OnClickListener {
 
     public static final String UPLOAD_URL = "http://sheltinderdatabase.000webhostapp.com/PetRegistry2.php";
