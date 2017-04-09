@@ -2,7 +2,7 @@ package pets.sheltinder;
 
 public class Converter {
 
-    public static String retPetTypeString(String intPetType){
+    public static String retPetTypeStringFromTypeString(String intPetType){
         String type ="";
         int pt = Integer.parseInt(intPetType);
 
@@ -16,6 +16,37 @@ public class Converter {
         return type;
     }
     public static AnimalType retTypeFromString(String petType){
-        return AnimalType.DOG;
+        AnimalType type = AnimalType.DOG;
+        if(petType.equals("1")){
+            type = AnimalType.CAT;
+        } else if (petType.equals("2")){
+            type = AnimalType.OTHER;
+        }
+        return type;
+    }
+
+    public static String retStringFromType(AnimalType type){
+        String pet = "Dog";
+
+        switch (type){
+            case CAT:
+                pet = "Cat";
+                break;
+            case OTHER:
+                pet = "Other";
+                break;
+            default:
+                break;
+        }
+
+        return pet;
+    }
+
+    public static String formatLocation(String loc){
+        return "Shelter Location: "+loc;
+    }
+
+    public static String formatPetTypeDescription(String type,String description){
+        return "Pet Type: "+type+"\n" +description;
     }
 }

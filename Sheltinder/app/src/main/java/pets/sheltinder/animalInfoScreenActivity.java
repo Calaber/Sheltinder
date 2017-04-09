@@ -19,7 +19,7 @@ public class animalInfoScreenActivity extends Activity{
     TextView animalInfo;
     TextView animalLoc;
     AnimalInfo animInfo;
-    ShelterInfo shelInfo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,13 +31,15 @@ public class animalInfoScreenActivity extends Activity{
         Log.d(TAG, "onCreate");
         SharedPreferences settings = getSharedPreferences("CurrentPet",
                 Context.MODE_PRIVATE);
-        String petName = settings.getString("pet_name", "Animal Name");
-        String petDescription = settings.getString("pet_description","N/A");
-        String petType = Converter.retPetTypeString(settings.getString("pet_Type","N/A"));
-        shelInfo = new ShelterInfo(settings.getString("pet_location","N/A"));
-        animalName.setText(petName);
-        animalInfo.setText("Pet Type: "+petType+"\n" +petDescription);
-        animalLoc.setText(shelInfo.getLocation());
+        animInfo = new AnimalInfo(settings.getString("pet_name", "Animal Name"),
+                settings.getString("pet_description","N/A"),
+                Converter.retTypeFromString(settings.getString("pet_Type","N/A"))
+                ,new ShelterInfo(settings.getString("pet_location","N/A")));
+        animalName.setText(animInfo.getAnimalName());
+        animalInfo.setText(Converter.formatPetTypeDescription(
+                Converter.retStringFromType(animInfo.getAnimType())
+                ,animInfo.getAnimalInfo()));
+        animalLoc.setText(Converter.formatLocation(animInfo.getShelter().getLocation()));
     }
 
     public void addListenersOnButtons(){

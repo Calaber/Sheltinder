@@ -4,7 +4,7 @@ public class ShelterInfo {
     private String location;
 
     public ShelterInfo(String loc){
-        location = "Shelter Location: "+loc;
+        location = loc;
     }
 
     public void setLocation(String loc){
