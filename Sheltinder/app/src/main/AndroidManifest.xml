@@ -46,14 +46,13 @@
         </activity>
 
         <activity android:name=".UserRegisterScreen"/>
-        <activity android:name=".mainScreenActivity"/>
+        <activity android:name=".MainMenuScreen"/>
         <activity android:name=".PetRegisterScreen"/>
-        <activity android:name=".animalScreenActivity"/>
-        <activity android:name=".animalInfoScreenActivity"/>
-        <activity android:name=".settingScreenActivity"/>
-        <activity android:name=".ShelterInfoInputActivity"/>
+        <activity android:name=".PetImageScreen"/>
+        <activity android:name=".PetInformationScreen"/>
+        <activity android:name=".SettingsScreen"/>
         <activity
-            android:name=".MapsActivity"
+            android:name=".MapsScreen"
             android:label="@string/title_activity_maps"/>
     </application>
 

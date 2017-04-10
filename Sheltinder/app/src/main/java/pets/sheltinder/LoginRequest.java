@@ -8,7 +8,7 @@ import java.util.Map;
 
 class LoginRequest extends StringRequest {
 
-    private static final String LOGIN_REQUEST_URL = "http://sheltinderdatabase.000webhostapp.com/Login.php";
+    private static final String LOGIN_REQUEST_URL = "http://cse.ohio-state.edu/~re.9/login.php";
 
     private Map<String, String> params;
 

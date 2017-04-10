@@ -54,7 +54,7 @@
         android:padding="10dp"
         android:layout_marginBottom="8dp"
         android:textColor="#ffffff"
-        android:background="@drawable/mybutton"
+        android:background="@drawable/custom_button"
         android:text="@string/button_login"
         android:textSize="20sp"/>
 

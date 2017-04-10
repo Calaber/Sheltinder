@@ -3,8 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:background="@drawable/sheltinder_background_text_input"
-    android:layout_height="fill_parent">
+    android:layout_height="fill_parent"
+    android:background="@drawable/sheltinder_background_text_input">
 
     <LinearLayout
 
@@ -86,9 +86,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="8dp"
+            android:padding="10dp"
             android:text="@string/select_image"
             android:textSize="20sp"
-            android:background="@drawable/mybutton"
+            android:textColor="#ffffff"
+            android:background="@drawable/custom_button"
             android:visibility="visible"/>
 
         <Button
@@ -96,9 +98,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="8dp"
+            android:padding="10dp"
             android:text="@string/upload_image"
             android:textSize="20sp"
-            android:background="@drawable/mybutton"
+            android:textColor="#ffffff"
+            android:background="@drawable/custom_button"
             android:visibility="gone"/>
 
         <Button
@@ -106,9 +110,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="8dp"
+            android:padding="10dp"
             android:text="@string/button_accept"
             android:textSize="20sp"
-            android:background="@drawable/mybutton"
+            android:textColor="#ffffff"
+            android:background="@drawable/custom_button"
             android:visibility="gone"/>
 
     </LinearLayout>

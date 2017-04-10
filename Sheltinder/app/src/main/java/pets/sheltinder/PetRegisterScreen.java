@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,8 +30,9 @@ import java.util.Hashtable;
 import java.util.Map;
 
 public class PetRegisterScreen extends AppCompatActivity implements View.OnClickListener {
+    private final String TAG = getClass().getSimpleName();
 
-    public static final String UPLOAD_URL = "http://sheltinderdatabase.000webhostapp.com/PetRegistry2.php";
+    public static final String UPLOAD_URL = "http://cse.ohio-state.edu/~re.9/registerPet.php";
 
     private EditText etPetName, etPetLocation, etPetDescription;
 
@@ -43,7 +46,7 @@ public class PetRegisterScreen extends AppCompatActivity implements View.OnClick
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        super.onCreate(savedInstanceState); Log.d(TAG, "onCreate");
         setContentView(R.layout.activity_pet_register_screen);
 
         etPetName = (EditText) findViewById(R.id.etPetName);
@@ -62,9 +65,7 @@ public class PetRegisterScreen extends AppCompatActivity implements View.OnClick
     }
 
     private void showFileChooser() {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
+        Intent intent = new Intent(); intent.setType("image/*"); intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
     }
 
@@ -90,43 +91,34 @@ public class PetRegisterScreen extends AppCompatActivity implements View.OnClick
         return Base64.encodeToString(imageBytes, Base64.DEFAULT);
     }
 
-    private void uploadImage(){
-        //Showing the progress dialog
+    private void uploadImage() {
         final ProgressDialog loading = ProgressDialog.show(this,"Uploading...","Please wait...",false,false);
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, UPLOAD_URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String s) {
-                        //Disimissing the progress dialog
                         loading.dismiss();
-                        //Showing toast message of the response
                         Toast.makeText(PetRegisterScreen.this, s , Toast.LENGTH_LONG).show();
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError volleyError) {
-                        //Dismissing the progress dialog
                         loading.dismiss();
-
-                        //Showing toast
                         Toast.makeText(PetRegisterScreen.this, volleyError.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 }){
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                //Converting Bitmap to String
                 String pet_image = getStringImage(bitmap);
 
                 String pet_name = etPetName.getText().toString().trim();
                 String pet_location = etPetLocation.getText().toString().trim();
                 String pet_description = etPetDescription.getText().toString().trim();
 
-                //Creating parameters
-                Map<String,String> params = new Hashtable<>();
+                Map<String, String> params = new Hashtable<>();
 
-                //Adding parameters
                 params.put("pet_name", pet_name);
                 params.put("pet_location", pet_location);
                 params.put("pet_description", pet_description);
@@ -135,15 +127,12 @@ public class PetRegisterScreen extends AppCompatActivity implements View.OnClick
 
                 params.put("pet_image", pet_image);
 
-                //returning parameters
                 return params;
             }
         };
 
-        //Creating a Request Queue
         RequestQueue requestQueue = Volley.newRequestQueue(this);
 
-        //Adding request to the queue
         requestQueue.add(stringRequest);
     }
 
@@ -166,13 +155,32 @@ public class PetRegisterScreen extends AppCompatActivity implements View.OnClick
         }
 
         if (v == bPetRegister) {
-            Intent intent = new Intent(PetRegisterScreen.this, mainScreenActivity.class);
-            PetRegisterScreen.this.startActivity(intent);
+            startActivity(new Intent(PetRegisterScreen.this, MainMenuScreen.class));
 
             ivPetImage.setVisibility(View.GONE);
 
             bSelectImage.setVisibility(View.VISIBLE);
             bPetRegister.setVisibility(View.GONE);
         }
+    }
+
+    public boolean onKeyDown(int keyCode, KeyEvent event)  {
+        if (Integer.parseInt(android.os.Build.VERSION.SDK) > 5
+                && keyCode == KeyEvent.KEYCODE_BACK
+                && event.getRepeatCount() == 0) {
+            Log.d("CDA", "onKeyDown Called");
+            onBackPressed();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Log.d("CDA", "onBackPressed Called");
+        Intent setIntent = new Intent(Intent.ACTION_MAIN);
+        setIntent.addCategory(Intent.CATEGORY_HOME);
+        setIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(setIntent);
     }
 }

@@ -21,10 +21,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class LoginScreen extends AppCompatActivity {
+    private final String TAG = getClass().getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        super.onCreate(savedInstanceState); Log.d(TAG, "onCreate");
         setContentView(R.layout.activity_login_screen);
 
         final EditText etUsername = (EditText) findViewById(R.id.etUsername);
@@ -37,9 +38,7 @@ public class LoginScreen extends AppCompatActivity {
         tvRegisterLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Intent registerIntent = new Intent(LoginScreen.this, UserRegisterScreen.class);
-                LoginScreen.this.startActivity(registerIntent);
+                startActivity(new Intent(LoginScreen.this, UserRegisterScreen.class));
             }
         });
 
@@ -60,7 +59,7 @@ public class LoginScreen extends AppCompatActivity {
 
                             if (success) {
 
-                                Intent intent = new Intent(LoginScreen.this, mainScreenActivity.class);
+                                Intent intent = new Intent(LoginScreen.this, MainMenuScreen.class);
                                 intent.putExtra("username", username);
                                 LoginScreen.this.startActivity(intent);
                             } else {
@@ -94,7 +93,6 @@ public class LoginScreen extends AppCompatActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
-
 
     @Override
     public void onBackPressed() {

@@ -8,7 +8,7 @@ import java.util.Map;
 
 class UserRegisterRequest extends StringRequest {
 
-    private static final String USER_REGISTER_REQUEST_URL = "http://sheltinderdatabase.000webhostapp.com/UserRegistry.php";
+    private static final String USER_REGISTER_REQUEST_URL = "http://cse.ohio-state.edu/~re.9/registerUser.php";
 
     private Map<String, String> params;
 

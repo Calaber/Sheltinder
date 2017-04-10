@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.app.AlertDialog;
 import android.content.Intent;
 
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -24,10 +26,11 @@ import org.json.JSONObject;
 // Ad8YkaVzA92bRCdZ
 
 public class UserRegisterScreen extends AppCompatActivity {
+    private final String TAG = getClass().getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        super.onCreate(savedInstanceState); Log.d(TAG, "onCreate");
         setContentView(R.layout.activity_user_register_screen);
 
         final EditText etUsername = (EditText) findViewById(R.id.etUsername);
@@ -53,7 +56,6 @@ public class UserRegisterScreen extends AppCompatActivity {
                 }
             }
         });
-
 
         bUserRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,6 +102,25 @@ public class UserRegisterScreen extends AppCompatActivity {
                 queue.add(userRegisterRequest);
             }
         });
+    }
 
+    public boolean onKeyDown(int keyCode, KeyEvent event)  {
+        if (Integer.parseInt(android.os.Build.VERSION.SDK) > 5
+                && keyCode == KeyEvent.KEYCODE_BACK
+                && event.getRepeatCount() == 0) {
+            Log.d("CDA", "onKeyDown Called");
+            onBackPressed();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Log.d("CDA", "onBackPressed Called");
+        Intent setIntent = new Intent(Intent.ACTION_MAIN);
+        setIntent.addCategory(Intent.CATEGORY_HOME);
+        setIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(setIntent);
     }
 }

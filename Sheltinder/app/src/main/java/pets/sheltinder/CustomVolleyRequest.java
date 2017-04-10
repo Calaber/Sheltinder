@@ -1,5 +1,6 @@
 package pets.sheltinder;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.v4.util.LruCache;
@@ -14,7 +15,9 @@ import com.android.volley.toolbox.ImageLoader;
 
 class CustomVolleyRequest {
 
+    @SuppressLint("StaticFieldLeak")
     private static CustomVolleyRequest customVolleyRequest;
+    @SuppressLint("StaticFieldLeak")
     private static Context context;
     private RequestQueue requestQueue;
     private ImageLoader imageLoader;
