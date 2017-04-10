@@ -23,7 +23,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class PetImageScreen extends Activity implements View.OnClickListener{
+public class PetImageScreen extends Activity implements View.OnClickListener {
     private final String TAG = getClass().getSimpleName();
 
     private static final String DOWNLOAD_URL = "http://cse.ohio-state.edu/~re.9/getPetInfo.php";

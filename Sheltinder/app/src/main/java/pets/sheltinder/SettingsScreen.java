@@ -11,10 +11,10 @@ import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 
-public class SettingsScreen extends Activity implements View.OnClickListener{
+public class SettingsScreen extends Activity implements View.OnClickListener {
     private final String TAG = getClass().getSimpleName();
 
-    SharedPreferences sharedPreferences;
+    SharedPreferences searchSettings;
 
     boolean all, dog, cat, other;
 
@@ -25,7 +25,7 @@ public class SettingsScreen extends Activity implements View.OnClickListener{
         super.onCreate(savedInstanceState); Log.d(TAG, "onCreate");
         setContentView(R.layout.activity_settings_screen);
 
-        sharedPreferences = getSharedPreferences("settings",Context.MODE_PRIVATE);
+        searchSettings = getSharedPreferences("searchSettings", Context.MODE_PRIVATE);
 
         all = true; dog = false; cat = false; other = false;
 
@@ -54,10 +54,10 @@ public class SettingsScreen extends Activity implements View.OnClickListener{
 
     private void setUpSettings() {
 
-        all = sharedPreferences.getBoolean("wantAll", all);
-        dog = sharedPreferences.getBoolean("wantDog", dog);
-        cat = sharedPreferences.getBoolean("wantCat", cat);
-        other = sharedPreferences.getBoolean("wantOther", other);
+        all = searchSettings.getBoolean("wantAll", all);
+        dog = searchSettings.getBoolean("wantDog", dog);
+        cat = searchSettings.getBoolean("wantCat", cat);
+        other = searchSettings.getBoolean("wantOther", other);
 
         saveSettings();
 
@@ -68,7 +68,7 @@ public class SettingsScreen extends Activity implements View.OnClickListener{
     }
 
     public void saveSettings() {
-        SharedPreferences.Editor editor = sharedPreferences.edit();
+        SharedPreferences.Editor editor = searchSettings.edit();
 
         editor.putBoolean("wantAll", all);
         editor.putBoolean("wantDog", dog);
